@@ -1,0 +1,7 @@
+{
+    "/api": {
+        "target": "https://fantasy.premierleague.com/drf/elements/",
+        "secure": false,
+        "changeOrigin": true
+    }
+}
