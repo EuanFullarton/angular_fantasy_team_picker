@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Player } from './player';
+import { Position } from './position';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -11,28 +11,27 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-
-export class PlayerService {
+export class PositionService {
 
   constructor(
     private http: HttpClient
   ) { }
 
-  private playersUrl = '/api/players';
+  private positionsUrl = '/api/positions'
 
-  getPlayers(): Observable<Player[]> {
-    return this.http.get<Player[]>(this.playersUrl, httpOptions)
+  getPositions(): Observable<Position[]> {
+    return this.http.get<Position[]>(this.positionsUrl, httpOptions)
       .pipe(
-        catchError(this.handleError('getPlayers', []))
+        catchError(this.handleError('getPositions', []))
       );
   }
 
   /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
+  * Handle Http operation that failed.
+  * Let the app continue.
+  * @param operation - name of the operation that failed
+  * @param result - optional value to return as the observable result
+  */
     private handleError<T>(operation = 'operation', result?: T) {
       return (error: any): Observable<T> => {
 

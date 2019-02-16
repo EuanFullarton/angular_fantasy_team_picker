@@ -1,6 +1,11 @@
 {
-    "/api": {
+    "/api/players": {
         "target": "https://fantasy.premierleague.com/drf/elements/",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/api/positions": {
+        "target": "https://fantasy.premierleague.com/drf/element-types/",
         "secure": false,
         "changeOrigin": true
     }

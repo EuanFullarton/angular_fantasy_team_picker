@@ -1,5 +1,10 @@
 <select [(ngModel)]="model">
     <option selected="selected" disabled>Player...</option>
-    <!-- *ngFor="let player of filterPlayersByPosition('Goalkeeper')" -->
-    <option *ngFor="let player of players" [ngValue]="player">{{ player.first_name }} {{ player.second_name }}</option>
-  </select>
+    <option *ngFor="let player of filterByPosition('Goalkeeper')" [ngValue]="player">{{ player.web_name }}</option>
+    <!-- <option *ngFor="let player of players" [ngValue]="player">{{ player.web_name }}</option> -->
+</select>
+
+<select [(ngModel)]="model">
+    <option selected="selected" disabled>Position...</option>
+    <option *ngFor="let position of positions" [ngValue]="position">{{ position.singular_name }}</option>
+</select>

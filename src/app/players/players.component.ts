@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../player';
+import { Position } from '../position';
 import { PlayerService } from '../player.service';
+import { PositionService } from '../position.service';
 
 @Component({
   selector: 'app-players',
@@ -10,12 +12,14 @@ import { PlayerService } from '../player.service';
 export class PlayersComponent implements OnInit {
 
   players: Player[];
+  positions: Position[];
+  test: Object[];
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private positionService: PositionService) { }
 
   ngOnInit() {
     this.getPlayers();
-    // this.getPositions();
+    this.getPositions();
   }
 
   getPlayers(): void {
@@ -23,14 +27,15 @@ export class PlayersComponent implements OnInit {
       .subscribe(players => this.players = players);
   }
 
-  getPositions() {
-    // map positions from 'element_type'
-    // Positions = key value array
+  getPositions(): void {
+    const positions = this.positionService.getPositions()
+      .subscribe(positions => { this.positions = positions; });
   }
 
-  filterPlayersByPosition(position) {
-    // return this.players.filter(x => x. == type);
+  filterByPosition(selectedPosition) {
+    if (this.positions !== undefined && this.players !== undefined) {
+      const positionId = this.positions.find(x => x.singular_name === selectedPosition).id;
+      return this.players.filter(x => x.element_type === positionId);
+    }
   }
-  
-  
 }
