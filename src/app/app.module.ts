@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { PlayersComponent } from './players/players.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CommonModule } from '@angular/common';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

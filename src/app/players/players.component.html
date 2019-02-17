@@ -1,10 +1,120 @@
-<select [(ngModel)]="model">
-    <option selected="selected" disabled>Player...</option>
-    <option *ngFor="let player of filterByPosition('Goalkeeper')" [ngValue]="player">{{ player.web_name }}</option>
-    <!-- <option *ngFor="let player of players" [ngValue]="player">{{ player.web_name }}</option> -->
-</select>
-
-<select [(ngModel)]="model">
-    <option selected="selected" disabled>Position...</option>
-    <option *ngFor="let position of positions" [ngValue]="position">{{ position.singular_name }}</option>
-</select>
+<div class="container h-100">
+    <div class="row justify-content-center p-4">
+        <div class="col-12 text-center">
+            <select 
+            name="goalkeeper" 
+            (change)="updateSelectionList(goalkeeper, 'goalkeeper')"
+            [(ngModel)]="goalkeeper">
+                <option value="">Not selected</option>
+                <option *ngFor="let goalkeeper of filterByPosition('Goalkeeper')" [ngValue]="goalkeeper.id">{{ goalkeeper.web_name }}</option>
+            </select>
+            <p *ngIf="team.goalkeeper !== undefined">{{ team.goalkeeper[0].web_name }}</p>
+        </div>
+    </div>
+    <div class="row justify-content-center p-4">
+        <div class="col-3 text-center">
+            <select 
+            name="defender1"
+            (change)="updateSelectionList(defender1, 'defender1')"
+            [(ngModel)]="defender1">
+                <option value="">Not selected</option>
+                <option *ngFor="let defender1 of filterByPosition('Defender')" [ngValue]="defender1.id">{{ defender1.web_name }}</option>
+            </select>
+            <p *ngIf="team.defender1 !== undefined">{{ team.defender1[0].web_name }}</p>
+        </div>
+        <div class="col-3 text-center">
+            <select 
+            name="defender2"
+            (change)="updateSelectionList(defender2, 'defender2')"
+            [(ngModel)]="defender2">
+                <option value="">Not selected</option>
+                <option *ngFor="let defender2 of filterByPosition('Defender')" [ngValue]="defender2.id">{{ defender2.web_name }}</option>
+            </select>
+            <p *ngIf="team.defender2 !== undefined">{{ team.defender2[0].web_name }}</p>
+        </div>
+        <div class="col-3 text-center">
+            <select 
+            name="defender3"
+            (change)="updateSelectionList(defender3, 'defender3')"
+            [(ngModel)]="defender3">
+                <option value="">Not selected</option>
+                <option *ngFor="let defender3 of filterByPosition('Defender')" [ngValue]="defender3.id">{{ defender3.web_name }}</option>
+            </select>
+            <p *ngIf="team.defender3 !== undefined">{{ team.defender3[0].web_name }}</p>
+        </div>
+        <div class="col-3 text-center">
+            <select 
+            name="defender4"
+            (change)="updateSelectionList(defender4, 'defender4')"
+            [(ngModel)]="defender4">
+                <option value="">Not selected</option>
+                <option *ngFor="let defender4 of filterByPosition('Defender')" [ngValue]="defender4.id">{{ defender4.web_name }}</option>
+            </select>
+            <p *ngIf="team.defender4 !== undefined">{{ team.defender4[0].web_name }}</p>
+        </div>
+    </div>
+    <div class="row justify-content-center p-5">
+        <div class="col-3 text-center">
+            <select 
+            name="midfielder1"
+            (change)="updateSelectionList(midfielder1, 'midfielder1')"
+            [(ngModel)]="midfielder1">
+                <option value="">Not selected</option>
+                <option *ngFor="let midfielder1 of filterByPosition('Midfielder')" [ngValue]="midfielder1.id">{{ midfielder1.web_name }}</option>
+            </select>
+            <p *ngIf="team.midfielder1 !== undefined">{{ team.midfielder1[0].web_name }}</p>
+        </div>
+        <div class="col-3 text-center">
+            <select 
+            name="midfielder2"
+            (change)="updateSelectionList(midfielder2, 'midfielder2')"
+            [(ngModel)]="midfielder2">
+                <option value="">Not selected</option>
+                <option *ngFor="let midfielder2 of filterByPosition('Midfielder')" [ngValue]="midfielder2.id">{{ midfielder2.web_name }}</option>
+            </select>
+            <p *ngIf="team.midfielder2 !== undefined">{{ team.midfielder2[0].web_name }}</p>
+        </div>
+        <div class="col-3 text-center">
+            <select 
+            name="midfielder3"
+            (change)="updateSelectionList(midfielder3, 'midfielder3')"
+            [(ngModel)]="midfielder3">
+                <option value="">Not selected</option>
+                <option *ngFor="let midfielder3 of filterByPosition('Midfielder')" [ngValue]="midfielder3.id">{{ midfielder3.web_name }}</option>
+            </select>
+            <p *ngIf="team.midfielder3 !== undefined">{{ team.midfielder3[0].web_name }}</p>
+        </div>
+        <div class="col-3 text-center">
+            <select 
+            name="midfielder4"
+            (change)="updateSelectionList(midfielder4, 'midfielder4')"
+            [(ngModel)]="midfielder4">
+                <option value="">Not selected</option>
+                <option *ngFor="let midfielder4 of filterByPosition('Midfielder')" [ngValue]="midfielder4.id">{{ midfielder4.web_name }}</option>
+            </select>
+            <p *ngIf="team.midfielder4 !== undefined">{{ team.midfielder4[0].web_name }}</p>
+        </div>
+    </div>
+    <div class="row justify-content-center p-5">
+        <div class="col-6 text-center">
+            <select 
+            name="forward1"
+            (change)="updateSelectionList(forward1, 'forward1')"
+            [(ngModel)]="forward1">
+                <option value="">Not selected</option>
+                <option *ngFor="let forward1 of filterByPosition('Forward')" [ngValue]="forward1.id">{{ forward1.web_name }}</option>
+            </select>
+            <p *ngIf="team.forward1 !== undefined">{{ team.forward1[0].web_name }}</p>
+        </div>
+        <div class="col-6 text-center">
+            <select 
+            name="forward2"
+            (change)="updateSelectionList(forward2, 'forward2')"
+            [(ngModel)]="forward2">
+                <option value="">Not selected</option>
+                <option *ngFor="let forward2 of filterByPosition('Forward')" [ngValue]="forward2.id">{{ forward2.web_name }}</option>
+            </select>
+            <p *ngIf="team.forward2 !== undefined">{{ team.forward2[0].web_name }}</p>
+        </div>
+    </div>
+</div>
