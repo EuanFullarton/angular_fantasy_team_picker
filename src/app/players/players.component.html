@@ -1,6 +1,6 @@
-<div class="container h-100">
-    <div class="row justify-content-center p-4">
-        <div class="col-12 text-center">
+<div class="container pitch">
+    <div class="row justify-content-center">
+        <div class="col-3 text-center">
             <select 
             name="goalkeeper" 
             (change)="updateSelectionList(goalkeeper, 'goalkeeper')"
@@ -11,7 +11,7 @@
             <p *ngIf="team.goalkeeper !== undefined">{{ team.goalkeeper[0].web_name }}</p>
         </div>
     </div>
-    <div class="row justify-content-center p-4">
+    <div class="row justify-content-center">
         <div class="col-3 text-center">
             <select 
             name="defender1"
@@ -53,7 +53,7 @@
             <p *ngIf="team.defender4 !== undefined">{{ team.defender4[0].web_name }}</p>
         </div>
     </div>
-    <div class="row justify-content-center p-5">
+    <div class="row justify-content-center">
         <div class="col-3 text-center">
             <select 
             name="midfielder1"
@@ -95,8 +95,8 @@
             <p *ngIf="team.midfielder4 !== undefined">{{ team.midfielder4[0].web_name }}</p>
         </div>
     </div>
-    <div class="row justify-content-center p-5">
-        <div class="col-6 text-center">
+    <div class="row justify-content-center">
+        <div class="col-3 text-center">
             <select 
             name="forward1"
             (change)="updateSelectionList(forward1, 'forward1')"
@@ -106,7 +106,7 @@
             </select>
             <p *ngIf="team.forward1 !== undefined">{{ team.forward1[0].web_name }}</p>
         </div>
-        <div class="col-6 text-center">
+        <div class="col-3 text-center">
             <select 
             name="forward2"
             (change)="updateSelectionList(forward2, 'forward2')"
@@ -118,3 +118,49 @@
         </div>
     </div>
 </div>
+<hr/>
+<div class="container bench">
+    <div class="row justify-content-center p-4">
+        <div class="col-3 text-center">
+            <select 
+            name="goalkeeper2"
+            (change)="updateSelectionList(goalkeeper2, 'goalkeeper2')"
+            [(ngModel)]="goalkeeper2">
+                <option value="">Not selected</option>
+                <option *ngFor="let goalkeeper2 of filterByPosition('Goalkeeper')" [ngValue]="goalkeeper2.id">{{ goalkeeper2.web_name }}</option>
+            </select>
+            <p *ngIf="team.goalkeeper2 !== undefined">{{ team.goalkeeper2[0].web_name }}</p>
+        </div>
+        <div class="col-3 text-center">
+            <select 
+            name="defender5"
+            (change)="updateSelectionList(defender5, 'defender5')"
+            [(ngModel)]="defender5">
+                <option value="">Not selected</option>
+                <option *ngFor="let defender5 of filterByPosition('Defender')" [ngValue]="defender5.id">{{ defender5.web_name }}</option>
+            </select>
+            <p *ngIf="team.defender5 !== undefined">{{ team.defender5[0].web_name }}</p>
+        </div>
+        <div class="col-3 text-center">
+            <select 
+            name="midfielder5"
+            (change)="updateSelectionList(midfielder5, 'midfielder5')"
+            [(ngModel)]="midfielder5">
+                <option value="">Not selected</option>
+                <option *ngFor="let midfielder5 of filterByPosition('Midfielder')" [ngValue]="midfielder5.id">{{ midfielder5.web_name }}</option>
+            </select>
+            <p *ngIf="team.midfielder5 !== undefined">{{ team.midfielder5[0].web_name }}</p>
+        </div>
+        <div class="col-3 text-center">
+            <select 
+            name="forward3"
+            (change)="updateSelectionList(forward3, 'forward3')"
+            [(ngModel)]="forward3">
+                <option value="">Not selected</option>
+                <option *ngFor="let forward3 of filterByPosition('Forward')" [ngValue]="forward3.id">{{ forward3.web_name }}</option>
+            </select>
+            <p *ngIf="team.forward3 !== undefined">{{ team.forward3[0].web_name }}</p>
+        </div>
+    </div>
+</div>
+    

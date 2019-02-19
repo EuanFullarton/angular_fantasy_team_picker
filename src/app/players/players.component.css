@@ -1,0 +1,14 @@
+.pitch {
+    background-image: url('/assets/svg/pitch.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.pitch .row {
+    padding: 8%;
+}
+
+.pitch select, .bench select {
+    width: 80%;
+}
