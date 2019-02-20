@@ -13,7 +13,8 @@ export class PlayersComponent implements OnInit {
 
   players: Player[];
   positions: Position[];
-  team: Object[] = [];
+  team: Player[] = [];
+  budget: Number = 100;
 
   constructor(private playerService: PlayerService, private positionService: PositionService) { }
 
@@ -24,12 +25,16 @@ export class PlayersComponent implements OnInit {
 
   getPlayers(): void {
     const players = this.playerService.getPlayers()
-      .subscribe(players => this.players = players);
+      .subscribe(players => { this.players = players; this.sortPlayers(); });
   }
 
   getPositions(): void {
     const positions = this.positionService.getPositions()
-      .subscribe(positions => { this.positions = positions; });
+      .subscribe(positions => this.positions = positions );
+  }
+
+  sortPlayers(): void {
+    this.players.sort(this.sortByValue);
   }
 
   filterByPosition(selectedPosition) {
@@ -40,15 +45,41 @@ export class PlayersComponent implements OnInit {
   }
 
   updateSelectionList(selectedPlayerId, positionSlot) {
-    const playerIndex = this.players.map(function (player) {
+    const playerIndex = this.players.map(function(player) {
       return player.id
     }).indexOf(selectedPlayerId);
+
+    const selectedPlayer = this.players.splice(playerIndex, 1);
     
     if (this.team[positionSlot] === undefined) {
-      this.team[positionSlot] = this.players.splice(playerIndex, 1);
+      this.team[positionSlot] = selectedPlayer[0];
     } else {
-      this.players.push(this.team[positionSlot][0]);
-      this.team[positionSlot] = this.players.splice(playerIndex, 1);
+      this.players.push(this.team[positionSlot]);
+      this.team[positionSlot] = selectedPlayer[0];
     }    
+
+    this.updateBudget();
+  }
+
+  updateBudget() {
+    let transferSpend = 0;
+
+    Object.values(this.team).forEach(function(player) {
+      transferSpend += player.now_cost / 10;
+    });
+
+    this.budget = parseFloat((100 - transferSpend).toFixed(1));
+
+    if (this.budget < 0) {
+      document.getElementById('budget').classList.add('bankrupt');
+    }
+  }
+
+  sortByValue(a, b) {
+    if (a.now_cost < b.now_cost)
+      return 1;
+    if (a.now_cost > b.now_cost)
+      return -1;
+    return 0;
   }
 }

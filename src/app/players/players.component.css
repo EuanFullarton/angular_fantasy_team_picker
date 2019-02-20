@@ -9,6 +9,27 @@
     padding: 8%;
 }
 
+.pitch .selected-player {
+    color: white;
+    height: 0;
+    margin: 0;
+    text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
+
+.pitch select {
+    background: transparent;
+    border-color: white;
+    color: white;
+}
+
 .pitch select, .bench select {
     width: 80%;
+}
+
+.bankrupt {
+    color: red;
 }
