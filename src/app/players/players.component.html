@@ -11,7 +11,7 @@
                     <option *ngFor="let goalkeeper of filterByPosition('Goalkeeper')" 
                     [ngValue]="goalkeeper.id">{{ goalkeeper.web_name }} - £{{ goalkeeper.now_cost / 10}}m</option>
                 </select>
-                <p class="selected-player" *ngIf="team.goalkeeper !== undefined">{{ team.goalkeeper.web_name }}</p>
+                <p class="selected-player" *ngIf="team_players.goalkeeper !== undefined">{{ team_players.goalkeeper.web_name }} - {{ selected_player_teams.goalkeeper_team }}</p>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -24,7 +24,7 @@
                     <option *ngFor="let defender1 of filterByPosition('Defender')" 
                     [ngValue]="defender1.id">{{ defender1.web_name }} - £{{ defender1.now_cost / 10}}m</option>
                 </select>
-                <p class="selected-player" *ngIf="team.defender1 !== undefined">{{ team.defender1.web_name }}</p>
+                <p class="selected-player" *ngIf="team_players.defender1 !== undefined">{{ team_players.defender1.web_name }} - {{ selected_player_teams.defender1_team }}</p>
             </div>
             <div class="col-3 text-center">
                 <select 
@@ -35,7 +35,7 @@
                     <option *ngFor="let defender2 of filterByPosition('Defender')" 
                     [ngValue]="defender2.id">{{ defender2.web_name }} - £{{ defender2.now_cost / 10}}m</option>
                 </select>
-                <p class="selected-player" *ngIf="team.defender2 !== undefined">{{ team.defender2.web_name }}</p>
+                <p class="selected-player" *ngIf="team_players.defender2 !== undefined">{{ team_players.defender2.web_name }} - {{ selected_player_teams.defender2_team }}</p>
             </div>
             <div class="col-3 text-center">
                 <select 
@@ -46,7 +46,7 @@
                     <option *ngFor="let defender3 of filterByPosition('Defender')" 
                     [ngValue]="defender3.id">{{ defender3.web_name }} - £{{ defender3.now_cost / 10}}m</option>
                 </select>
-                <p class="selected-player" *ngIf="team.defender3 !== undefined">{{ team.defender3.web_name }}</p>
+                <p class="selected-player" *ngIf="team_players.defender3 !== undefined">{{ team_players.defender3.web_name }} - {{ selected_player_teams.defender3_team }}</p>
             </div>
             <div class="col-3 text-center">
                 <select 
@@ -57,7 +57,7 @@
                     <option *ngFor="let defender4 of filterByPosition('Defender')" 
                     [ngValue]="defender4.id">{{ defender4.web_name }} - £{{ defender4.now_cost / 10}}m</option>
                 </select>
-                <p class="selected-player" *ngIf="team.defender4 !== undefined">{{ team.defender4.web_name }}</p>
+                <p class="selected-player" *ngIf="team_players.defender4 !== undefined">{{ team_players.defender4.web_name }} - {{ selected_player_teams.defender4_team }}</p>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -70,7 +70,7 @@
                     <option *ngFor="let midfielder1 of filterByPosition('Midfielder')" 
                     [ngValue]="midfielder1.id">{{ midfielder1.web_name }} - £{{ midfielder1.now_cost / 10}}m</option>
                 </select>
-                <p class="selected-player" *ngIf="team.midfielder1 !== undefined">{{ team.midfielder1.web_name }}</p>
+                <p class="selected-player" *ngIf="team_players.midfielder1 !== undefined">{{ team_players.midfielder1.web_name }} - {{ selected_player_teams.midfielder1_team }}</p>
             </div>
             <div class="col-3 text-center">
                 <select 
@@ -81,7 +81,7 @@
                     <option *ngFor="let midfielder2 of filterByPosition('Midfielder')" 
                     [ngValue]="midfielder2.id">{{ midfielder2.web_name }} - £{{ midfielder2.now_cost / 10}}m</option>
                 </select>
-                <p class="selected-player" *ngIf="team.midfielder2 !== undefined">{{ team.midfielder2.web_name }}</p>
+                <p class="selected-player" *ngIf="team_players.midfielder2 !== undefined">{{ team_players.midfielder2.web_name }} - {{ selected_player_teams.midfielder2_team }}</p>
             </div>
             <div class="col-3 text-center">
                 <select 
@@ -92,7 +92,7 @@
                     <option *ngFor="let midfielder3 of filterByPosition('Midfielder')" 
                     [ngValue]="midfielder3.id">{{ midfielder3.web_name }} - £{{ midfielder3.now_cost / 10}}m</option>
                 </select>
-                <p class="selected-player" *ngIf="team.midfielder3 !== undefined">{{ team.midfielder3.web_name }}</p>
+                <p class="selected-player" *ngIf="team_players.midfielder3 !== undefined">{{ team_players.midfielder3.web_name }} - {{ selected_player_teams.midfielder3_team }}</p>
             </div>
             <div class="col-3 text-center">
                 <select 
@@ -103,7 +103,7 @@
                     <option *ngFor="let midfielder4 of filterByPosition('Midfielder')" 
                     [ngValue]="midfielder4.id">{{ midfielder4.web_name }} - £{{ midfielder4.now_cost / 10}}m</option>
                 </select>
-                <p class="selected-player" *ngIf="team.midfielder4 !== undefined">{{ team.midfielder4.web_name }}</p>
+                <p class="selected-player" *ngIf="team_players.midfielder4 !== undefined">{{ team_players.midfielder4.web_name }} - {{ selected_player_teams.midfielder4_team }}</p>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -116,7 +116,7 @@
                     <option *ngFor="let forward1 of filterByPosition('Forward')" 
                     [ngValue]="forward1.id">{{ forward1.web_name }} - £{{ forward1.now_cost / 10}}m</option>
                 </select>
-                <p class="selected-player" *ngIf="team.forward1 !== undefined">{{ team.forward1.web_name }}</p>
+                <p class="selected-player" *ngIf="team_players.forward1 !== undefined">{{ team_players.forward1.web_name }} - {{ selected_player_teams.forward1_team }}</p>
             </div>
             <div class="col-3 text-center">
                 <select 
@@ -127,7 +127,7 @@
                     <option *ngFor="let forward2 of filterByPosition('Forward')" 
                     [ngValue]="forward2.id">{{ forward2.web_name }} - £{{ forward2.now_cost / 10}}m</option>
                 </select>
-                <p class="selected-player" *ngIf="team.forward2 !== undefined">{{ team.forward2.web_name }}</p>
+                <p class="selected-player" *ngIf="team_players.forward2 !== undefined">{{ team_players.forward2.web_name }} - {{ selected_player_teams.forward2_team }}</p>
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
                     <option *ngFor="let goalkeeper2 of filterByPosition('Goalkeeper')" 
                     [ngValue]="goalkeeper2.id">{{ goalkeeper2.web_name }} - £{{ goalkeeper2.now_cost / 10}}m</option>
                 </select>
-                <p *ngIf="team.goalkeeper2 !== undefined">{{ team.goalkeeper2.web_name }}</p>
+                <p *ngIf="team_players.goalkeeper2 !== undefined">{{ team_players.goalkeeper2.web_name }} - {{ selected_player_teams.goalkeeper2_team }}</p>
             </div>
             <div class="col-3 text-center">
                 <select 
@@ -156,7 +156,7 @@
                     <option *ngFor="let defender5 of filterByPosition('Defender')" 
                     [ngValue]="defender5.id">{{ defender5.web_name }} - £{{ defender5.now_cost / 10}}m</option>
                 </select>
-                <p *ngIf="team.defender5 !== undefined">{{ team.defender5.web_name }}</p>
+                <p *ngIf="team_players.defender5 !== undefined">{{ team_players.defender5.web_name }} - {{ selected_player_teams.defender5_team }}</p>
             </div>
             <div class="col-3 text-center">
                 <select 
@@ -167,7 +167,7 @@
                     <option *ngFor="let midfielder5 of filterByPosition('Midfielder')" 
                     [ngValue]="midfielder5.id">{{ midfielder5.web_name }} - £{{ midfielder5.now_cost / 10}}m</option>
                 </select>
-                <p *ngIf="team.midfielder5 !== undefined">{{ team.midfielder5.web_name }}</p>
+                <p *ngIf="team_players.midfielder5 !== undefined">{{ team_players.midfielder5.web_name }} - {{ selected_player_teams.midfielder5_team }}</p>
             </div>
             <div class="col-3 text-center">
                 <select 
@@ -178,7 +178,7 @@
                     <option *ngFor="let forward3 of filterByPosition('Forward')" 
                     [ngValue]="forward3.id">{{ forward3.web_name }} - £{{ forward3.now_cost / 10}}m</option>
                 </select>
-                <p *ngIf="team.forward3 !== undefined">{{ team.forward3.web_name }}</p>
+                <p *ngIf="team_players.forward3 !== undefined">{{ team_players.forward3.web_name }} - {{ selected_player_teams.forward3_team }}</p>
             </div>
         </div>
     </div>

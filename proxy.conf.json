@@ -8,5 +8,10 @@
         "target": "https://fantasy.premierleague.com/drf/element-types/",
         "secure": false,
         "changeOrigin": true
+    },
+    "/api/teams": {
+        "target": "https://fantasy.premierleague.com/drf/teams/",
+        "secure": false,
+        "changeOrigin": true
     }
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../player';
 import { Position } from '../position';
+import { Team } from '../team';
 import { PlayerService } from '../player.service';
 import { PositionService } from '../position.service';
+import { TeamService } from '../team.service';
 
 @Component({
   selector: 'app-players',
@@ -13,14 +15,21 @@ export class PlayersComponent implements OnInit {
 
   players: Player[];
   positions: Position[];
-  team: Player[] = [];
+  team_players: Player[] = [];
+  selected_player_teams: Team[] = [];
+  teams: Team[];
   budget: Number = 100;
 
-  constructor(private playerService: PlayerService, private positionService: PositionService) { }
+  constructor(
+    private playerService: PlayerService, 
+    private positionService: PositionService, 
+    private teamService: TeamService
+  ) { }
 
   ngOnInit() {
     this.getPlayers();
     this.getPositions();
+    this.getTeams();
   }
 
   getPlayers(): void {
@@ -31,6 +40,11 @@ export class PlayersComponent implements OnInit {
   getPositions(): void {
     const positions = this.positionService.getPositions()
       .subscribe(positions => this.positions = positions );
+  }
+
+  getTeams(): void {
+    const teams = this.teamService.getTeams()
+      .subscribe(teams => this.teams = teams );
   }
 
   sortPlayers(): void {
@@ -44,6 +58,13 @@ export class PlayersComponent implements OnInit {
     }
   }
 
+  getTeamName(team_id) {
+    if (this.teams !== undefined) {     
+      let team_object = this.teams.find(team => team.code === team_id);
+      return team_object.short_name;
+    }
+  }
+
   updateSelectionList(selectedPlayerId, positionSlot) {
     const playerIndex = this.players.map(function(player) {
       return player.id
@@ -51,12 +72,15 @@ export class PlayersComponent implements OnInit {
 
     const selectedPlayer = this.players.splice(playerIndex, 1);
     
-    if (this.team[positionSlot] === undefined) {
-      this.team[positionSlot] = selectedPlayer[0];
+    if (this.team_players[positionSlot] === undefined) {
+      this.team_players[positionSlot] = selectedPlayer[0];
     } else {
-      this.players.push(this.team[positionSlot]);
-      this.team[positionSlot] = selectedPlayer[0];
-    }    
+      this.players.push(this.team_players[positionSlot]);
+      this.team_players[positionSlot] = selectedPlayer[0];
+    }
+
+    const team_name = this.getTeamName(selectedPlayer[0].team_code);
+    this.selected_player_teams[positionSlot + '_team'] = team_name;
 
     this.updateBudget();
   }
@@ -64,7 +88,7 @@ export class PlayersComponent implements OnInit {
   updateBudget() {
     let transferSpend = 0;
 
-    Object.values(this.team).forEach(function(player) {
+    Object.values(this.team_players).forEach(function(player) {
       transferSpend += player.now_cost / 10;
     });
 
